@@ -1,0 +1,58 @@
+# --- Données ---
+# Les fichiers de données brutes/traitées sont trop volumineux pour Git
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- MLflow ---
+ml/mlruns/
+ml/mlartifacts/
+mlflow.db
+
+# --- Talend ---
+# Fichiers temporaires/générés de Talend Studio
+*.log
+metadata_backup/
+.Java/
+.metadata/
+*.lck
+temp/
+
+# --- Power BI ---
+# Les .pbix sont binaires et versionnent mal, mais on peut vouloir les garder
+# Décommente la ligne suivante si tu préfères ne pas versionner les .pbix
+# powerbi/*.pbix
+*.pbix.bak
+
+# --- n8n ---
+n8n/.n8n/
+n8n/*.sqlite
+
+# --- Environnement / secrets ---
+.env
+.env.local
+*.env
+secrets/
+config/local_settings.py
+
+# --- OS / Éditeurs ---
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+*.swp
+
+# --- Divers ---
+*.tmp
+*.bak
