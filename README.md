@@ -10,7 +10,7 @@ Ce projet analyse le marché immobilier français (transactions DVF 2021-2025) �
 
 | Source | Contenu | Lien |
 |---|---|---|
-| DVF géolocalisé (DGFiP/Etalab) | Transactions immobilières réelles, 2021-2025 | [data.gouv.fr](https://www.data.gouv.fr/api/1/datasets/r/d7933994-2c66-4131-a4da-cf7cd18040a4) |
+| DVF géolocalisé (DGFiP/Etalab) | Transactions immobilières réelles, 2021-2025 (20 382 915 lignes brutes, confirmé) | [data.gouv.fr](https://www.data.gouv.fr/api/1/datasets/r/d7933994-2c66-4131-a4da-cf7cd18040a4) |
 | INSEE Filosofi | Revenu médian par commune | à compléter |
 | DPE ADEME | Performance énergétique des logements | à compléter |
 | API BAN | Géocodage / normalisation des adresses | à compléter |
@@ -28,36 +28,46 @@ Ce projet analyse le marché immobilier français (transactions DVF 2021-2025) �
 
 ```
 projet-immo-france/
+├── README.md
+├── PROGRESS.md            # journal de reprise entre sessions de travail
 ├── data/
-│   ├── raw/              # fichiers bruts téléchargés
-│   └── processed/        # sorties nettoyées
+│   ├── raw/                # fichiers bruts téléchargés
+│   └── processed/          # sorties nettoyées + cache intermédiaire (gitignoré)
 ├── etl/
-│   └── talend_jobs/      # exports des jobs Talend
-├── notebooks/            # EDA, exploration
+│   └── talend_jobs/        # exports des jobs Talend
+├── notebooks/
+│   ├── 01_exploration_dvf.ipynb       # exploration initiale (aperçu, distributions)
+│   └── 02_regles_nettoyage_dvf.ipynb  # vérifications approfondies + définition des règles de nettoyage
 ├── sql/
-│   └── schema.sql        # création des tables PostgreSQL
+│   └── schema.sql          # création des tables PostgreSQL
 ├── ml/
 │   ├── src/
-│   └── mlruns/           # tracking MLflow (gitignoré)
+│   └── mlruns/              # tracking MLflow (gitignoré)
 ├── powerbi/
 │   └── dashboard.pbix
 ├── n8n/
 │   └── workflows/
 └── docs/
+    ├── regles_nettoyage.md  # spécification des règles de nettoyage DVF (base des jobs Talend)
     └── architecture.png
 ```
 
 ## Avancement du projet
 
 - [x] Phase 0 — Setup (Talend, PostgreSQL, Power BI, Python, Git)
-- [ ] Phase 1 — Collecte des données
-- [ ] Phase 2 — ETL (Talend)
-- [ ] Phase 3 — EDA
+- [x] Phase 1 — Collecte des données (DVF géolocalisé téléchargé, 20 382 915 lignes confirmées)
+- [ ] Phase 2 — ETL (Talend) — règles de nettoyage définitivement spécifiées (`docs/regles_nettoyage.md`), implémentation des jobs Talend pas encore commencée
+- [x] Phase 3 — EDA (exploration + qualification exhaustive des données — `notebooks/01_exploration_dvf.ipynb`, `notebooks/02_regles_nettoyage_dvf.ipynb`)
 - [ ] Phase 4 — Dashboard Power BI
 - [ ] Phase 5 — Machine Learning
 - [ ] Phase 6 — MLOps (MLflow)
 - [ ] Phase 7 — Automatisation (n8n)
 - [ ] Phase 8 — Documentation finale
+
+*(Note : `PROGRESS.md` utilise sa propre numérotation de phase, orientée journal de travail — sa "Phase 1"
+regroupe la Collecte, l'EDA et la définition des règles de nettoyage ci-dessus, sans se caler sur les
+phases du README. Se référer au README pour l'avancement global du projet, à `PROGRESS.md` pour le détail
+du travail en cours.)*
 
 ## Setup local
 
@@ -71,7 +81,3 @@ projet-immo-france/
 ```sql
 CREATE DATABASE immo_france;
 ```
-
-## Auteur
-
-À compléter.
