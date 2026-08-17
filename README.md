@@ -56,8 +56,8 @@ projet-immo-france/
 
 - [x] Phase 0 — Setup (Talend, PostgreSQL, Power BI, Python, Git)
 - [x] Phase 1 — Collecte des données (DVF géolocalisé téléchargé, 20 382 915 lignes confirmées)
-- [ ] Phase 2 — ETL (Talend) — règles de nettoyage définitivement spécifiées (`docs/regles_nettoyage.md`), implémentation des jobs Talend pas encore commencée
-- [x] Phase 3 — EDA (exploration + qualification exhaustive des données — `notebooks/01_exploration_dvf.ipynb`, `notebooks/02_regles_nettoyage_dvf.ipynb`)
+- [x] Phase 2 — EDA (exploration + qualification exhaustive des données — `notebooks/01_exploration_dvf.ipynb`, `notebooks/02_regles_nettoyage_dvf.ipynb`)
+- [ ] Phase 3 — ETL (Talend) — règles de nettoyage définitivement spécifiées (`docs/regles_nettoyage.md`), implémentation des jobs Talend pas encore commencée
 - [ ] Phase 4 — Dashboard Power BI
 - [ ] Phase 5 — Machine Learning
 - [ ] Phase 6 — MLOps (MLflow)
